@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+    image: minecraftlegion-app:latest
+    volumes:
+      - './config.js:/home/node/app/config.js'
+
+  web:
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    image: minecraftlegion-web:latest
+    ports:
+      - '3000:80'
+
+  server:
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+    image: minecraftlegion-server:latest
+    ports:
+      - '4001:4001'
